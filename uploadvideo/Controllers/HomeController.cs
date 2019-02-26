@@ -47,11 +47,14 @@ namespace uploadvideo.Controllers
         {
             try
             {
+                var keyDate = DateTime.Now.ToString("MM-dd-yyyy");
+                var keyTime = DateTime.Now.ToString("HH:mm:ss");
+                string keyname = keyDate + "_" + keyTime + ".mp4";
                 HttpPostedFileBase blobData = Request.Files[0];
                 var putRequest1 = new PutObjectRequest
                 {
                     BucketName = "python-test-osmosis",
-                    Key = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"),
+                    Key = keyname,
                     ContentType = "video/mp4",
                     CannedACL = S3CannedACL.PublicRead,
                     InputStream = blobData.InputStream

@@ -7,28 +7,36 @@
         display: none;
     }
 </style>
-
 <div class="row">
-    <div class="col-md-6">
-        <div id='gUMArea'>
-            <div>
-                Record:
-                <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
-                @*<input type="radio" name="media" value="audio">audio*@
-            </div>
-            <button class="btn btn-default" id='gUMbtn'>Request Stream</button>
-        </div>
-        <div id='btns'>
-            <button class="btn btn-default" id='start'>Start</button>
-            <button class="btn btn-default" id='stop'>Stop</button>
-        </div>
-        <div>
-            <ul class="list-unstyled" id='ul'></ul>
-        </div>
+    <div class="col-md-12 form-group">
+        &nbsp;
     </div>
-    @*<form name="foo" method="post" enctype="multipart/form-data">
-        <input id="mediaFile" type="file" class="hide" />
-    </form>*@    
+</div>
+<div class="row">
+    <div class="col-md-12 form-group">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-6">
+            <div id='gUMArea'>
+                <div>
+                    Record:
+                    <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+                </div>
+                <button class="btn btn-primary" id='gUMbtn'>Request Camera</button>
+            </div>
+            <div id='btns'>
+                <button class="btn btn-success" id='start'>Start Recording</button>
+                <button class="btn btn-danger" id='stop'>Stop Recording</button>
+            </div>
+            <div>
+                <ul class="list-unstyled" id='ul'></ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>      
 </div>
 
 <script>
@@ -97,8 +105,6 @@
         start.removeAttribute('disabled');
     }
 
-
-
     function makeLink() {
         let blob = new Blob(chunks, { type: media.type })
             , url = URL.createObjectURL(blob)
@@ -114,25 +120,6 @@
         li.appendChild(mt);
         li.appendChild(hf);
         ul.appendChild(li);
-
-        //var formdata = new FormData(`donwload ${hf.download}`);
-        //var key = (new Date).getTime() + '-' + blob.name;
-        //formdata.append(key, blob);
-
-        //$.ajax({
-        //    url: "/Home/Uploadvideo",
-        //    type: "POST",
-        //    dataType: "json",
-        //    data: formdata,
-        //    contentType: false,
-        //    processData: false,
-        //    success: function (data) {
-
-        //    },
-        //    error: function (data) {
-
-        //    }
-        //});
     }
 
     function posttoServer() {
